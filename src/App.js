@@ -30,8 +30,25 @@ const center = [-79.999732, 40.4374];
 // ------------------------------
 
 
+const heatPaint = {
+'heatmap-color': [
+    'interpolate',
+    ['linear'],
+    ['heatmap-density'],
+    0,
+    'rgba(236,222,239,0)',
+    0.2,
+    'rgb(208,209,230)',
+    0.4,
+    'rgb(166,189,219)',
+    0.6,
+    'rgb(103,169,207)',
+    0.8,
+    'rgb(28,144,153)'
+  ],
+}
 
-const layerPaint = {
+const goonerPaint = {
   // increase weight as diameter breast height increases
   'heatmap-weight': {
     property: 'dbh',
@@ -81,9 +98,7 @@ const layerPaint = {
   }
 }
 
-
-const layerPaint2 = {
-// increase the radius of the circle as the zoom level and dbh value increases
+const circlePaint = {
 'circle-radius': {
   property: 'dbh',
   type: 'exponential',
@@ -115,35 +130,40 @@ const layerPaint2 = {
     [15, 1]
   ]
 }
-}
-
-const circleLayout = {
-  visibility: 'visible',
 };
 
-const circlePaint = {
-  'circle-color': 'green',
-};
+
 
 const App = () => {
   return (
     <div>
-    <Map style={style} containerStyle={mapStyle} center={center}>
-      
-      <Source id="source_id" geoJsonSource={GEOJSON_SOURCE_OPTIONS} />
-      <GeoJSONLayer
-        data={geojson}
-        circleLayout={circleLayout}
-        circlePaint={circlePaint}
+      <Map style={style} containerStyle={mapStyle} center={center}>
+        
+        <Source id="source_id" geoJsonSource={GEOJSON_SOURCE_OPTIONS} />
+        <Layer
+          type="heatmap"
+          paint={heatPaint}
+          sourceId="source_id"
+          id="heatmap"
+        />
 
-      /> 
+
+        
+{/*         <GeoJSONLayer
+          data={geojson}
+          type="circle"
+          circlePaint={circlePaint}
+        />  */}
 
 
-    </Map>
-    <div className="sidebar">
-     asdfaksdjhfas dasdfoiuasdf asdfhsdofih
-    </div>
-    </div>
+      </Map>
+
+
+      <div className="sidebar">
+        asdfaksdjhfas dasdfoiuasdf asdfhsdofih
+      </div>
+    
+  </div>
   );
 };
 
