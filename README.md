@@ -1,10 +1,6 @@
-## Markers Symbol example
+# STARSOF THELID MAP
 
-Initialize a map with symbol markers based on geoJson data.
-
-![Demo gif](https://i.imgur.com/S0KcRen.gif)
-
-### Run it
+### How to run
 
     git clone https://github.com/mapbox/mapbox-react-examples.git
 
