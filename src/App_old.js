@@ -127,9 +127,7 @@ const circlePaint = {
 
 const App = () => {
   return (
-    <div>
     <Map style={style} containerStyle={mapStyle} center={center}>
-      
       <Source id="source_id" geoJsonSource={GEOJSON_SOURCE_OPTIONS} />
       <GeoJSONLayer
         data={geojson}
@@ -137,13 +135,7 @@ const App = () => {
         circlePaint={circlePaint}
 
       /> 
-
-
     </Map>
-    <div className="sidebar">
-     asdfaksdjhfas dasdfoiuasdf asdfhsdofih
-    </div>
-    </div>
   );
 };
 
