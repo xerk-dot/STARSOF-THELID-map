@@ -2,9 +2,8 @@
 
 ### How to run
 
-    git clone https://github.com/mapbox/mapbox-react-examples.git
+    git clone https://github.com/xerk-dot/starsof.git
 
-    cd mapbox-react-examples/markers-symbol
     npm install
     npm start
 
