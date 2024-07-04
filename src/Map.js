@@ -152,14 +152,14 @@ const MapboxExample = () => {
 
     //upon the creation of a new feature, fly to that feature.
     
-     
+/*      
     mapRef.current.flyTo({
       center: data.features[0].geometry.coordinates,
       speed: 0.5,
       zoom: 11
     }); 
 
-
+ */
   }, [data]);
 
   return <div ref={mapContainerRef} id="map" style={{ height: '100%' }} />;
