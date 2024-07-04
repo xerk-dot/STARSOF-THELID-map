@@ -40,7 +40,9 @@ CMD ["serve", "-s", "-l", "3000", "./build"]
 # npm install -g serve
 # npx serve -s build
 
-# Once you have the container, add it to the artifact registry by:
+
+# If Cloud Build CD is set up, you don't need to add it to the artifact registry and Cloud Run.
+# Otherwise, once you have the container, add it to the artifact registry by:
     
 # docker build  -t  starsof .
 
