@@ -35,7 +35,7 @@ const MapboxExample = () => {
       zoom: 11
     });
 
-    mapRef.current.on('load', async () => {
+    mapRef.current.on('load', async () => { //    map.on("load", function () {
       const geojson = await getLocation();
 
       mapRef.current.addSource('iss', {
