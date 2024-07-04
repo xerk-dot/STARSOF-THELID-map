@@ -3,9 +3,14 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 import { createRoot } from "react-dom/client";
 
 import "./Map.css";
-import geoJson from "./chicago-parks.json";
-import geoJsonTrees from "./trees.geojson";
+import geoJson from "./geojson/chicago-parks.json";
+import geoJsonTrees from "./geojson/trees.geojson";
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+import heatmapLayer from "./layer_styles/heatmapLayer.json";
+import circleLayer from "./layer_styles/circleLayer.json";
+import symbolLayer from "./layer_styles/symbolLayer.json";
+import issLayer from "./layer_styles/issLayer.json";
 
 const Marker = ({ onClick, children, feature }) => {
   const _onClick = () => {
@@ -50,110 +55,8 @@ const MapboxExample = () => {
 
       //trees
 
-      mapRef.current.addLayer(
-        {
-          'id': 'trees-heat',
-          'type': 'heatmap',
-          'source': 'trees',
-          'maxzoom': 15,
-          'paint': {
-            // increase weight as diameter breast height increases
-            'heatmap-weight': {
-              'property': 'dbh',
-              'type': 'exponential',
-              'stops': [
-                [1, 0],
-                [62, 1]
-              ]
-            },
-            // increase intensity as zoom level increases
-            'heatmap-intensity': {
-              'stops': [
-                [11, 1],
-                [15, 3]
-              ]
-            },
-            // use sequential color palette to use exponentially as the weight increases
-            'heatmap-color': [
-                'interpolate',
-                ['linear'],
-                ['heatmap-density'],
-                0,
-                'rgba(33,102,172,0)',
-                0.2,
-                'rgb(103,169,207)',
-                0.4,
-                'rgb(209,229,240)',
-                0.6,
-                'rgb(253,219,199)',
-                0.8,
-                'rgb(239,138,98)',
-                1,
-                'rgb(178,24,43)'
-            ],
-            // increase radius as zoom increases
-            'heatmap-radius': {
-              'stops': [
-                [11, 15],
-                [15, 20]
-              ]
-            },
-            // decrease opacity to transition into the circle layer
-            'heatmap-opacity': {
-              'default': 1,
-              'stops': [
-                [14, 1],
-                [15, 0]
-              ]
-            }
-          }
-        },
-        'waterway-label'
-      );
-
-      mapRef.current.addLayer(
-        {
-          'id': 'trees-point',
-          'type': 'circle',
-          'source': 'trees',
-          'minzoom': 14,
-          'paint': {
-            // increase the radius of the circle as the zoom level and dbh value increases
-            'circle-radius': {
-              'property': 'dbh',
-              'type': 'exponential',
-              'stops': [
-                [{ zoom: 15, value: 1 }, 5],
-                [{ zoom: 15, value: 62 }, 10],
-                [{ zoom: 22, value: 1 }, 20],
-                [{ zoom: 22, value: 62 }, 50]
-              ]
-            },
-            'circle-color': {
-              'property': 'dbh',
-              'type': 'exponential',
-              'stops': [
-                [0, 'rgba(236,222,239,0)'],
-                [10, 'rgb(236,222,239)'],
-                [20, 'rgb(208,209,230)'],
-                [30, 'rgb(166,189,219)'],
-                [40, 'rgb(103,169,207)'],
-                [50, 'rgb(28,144,153)'],
-                [60, 'rgb(1,108,89)']
-              ]
-            },
-            'circle-stroke-color': 'white',
-            'circle-stroke-width': 1,
-            'circle-opacity': {
-              'stops': [
-                [14, 0],
-                [15, 1]
-              ]
-            }
-          }
-        },
-        'waterway-label'
-      );
+      mapRef.current.addLayer(heatmapLayer,'waterway-label');
+      mapRef.current.addLayer(circleLayer, 'waterway-label');
 
       // Add an image to use as a custom marker
       mapRef.current.loadImage(
@@ -170,19 +73,7 @@ const MapboxExample = () => {
             },
           });
           // Add a symbol layer
-          mapRef.current.addLayer({
-            id: "points",
-            type: "symbol",
-            source: "points",
-            layout: {
-              "icon-image": "custom-marker",
-              // get the title name from the source's "title" property
-              "text-field": ["get", "title"],
-              "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-              "text-offset": [0, 1.25],
-              "text-anchor": "top",
-            },
-          });
+          mapRef.current.addLayer(symbolLayer);
         }
       );
     
@@ -212,18 +103,9 @@ const MapboxExample = () => {
 
       //iss
 
-      mapRef.current.addLayer({
-        id: 'iss',
-        type: 'symbol',
-        source: 'iss',
-        layout: {
-          'icon-image': 'rocket'
-        }
-      });
+      mapRef.current.addLayer(issLayer);
 
-      const updateSource = setInterval(async () => {
-        await getLocation(updateSource);
-      }, 5000);
+      const updateSource = setInterval(async () => {await getLocation(updateSource);}, 5000);
 
       async function getLocation(updateSource) {
         try {
