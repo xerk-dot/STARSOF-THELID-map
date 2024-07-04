@@ -7,6 +7,8 @@ import geoJson from "./geojson/chicago-parks.json";
 import geoJsonTrees from "./geojson/trees.geojson";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+import ControlPanel from './control-panel.tsx';
+
 import heatmapLayer from "./layer_styles/heatmapLayer.json";
 import circleLayer from "./layer_styles/circleLayer.json";
 import symbolLayer from "./layer_styles/symbolLayer.json";
@@ -28,14 +30,14 @@ const MapboxExample = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
 
-  const [data, setData] = useState();
-
+  const [data, setData, mapStyle] = useState();
+  
   useEffect(() => {
     mapboxgl.accessToken = 'pk.eyJ1IjoicnlrciIsImEiOiJjbHhjcWxiaDYwZmhrMnFvYWtlbDRlNzFzIn0.u3zAq2Ye9gGAzmkqijKMyQ';
 
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/dark-v11',
+      style: 'mapbox://styles/rykr/cly7tbems00tv01qjan5d7zm9',
       center: [-79.999732, 40.4374],
       zoom: 11
     });
@@ -150,13 +152,13 @@ const MapboxExample = () => {
 
     //upon the creation of a new feature, fly to that feature.
     
-/*     
+     
     mapRef.current.flyTo({
       center: data.features[0].geometry.coordinates,
       speed: 0.5,
       zoom: 11
     }); 
-*/
+
 
   }, [data]);
 
