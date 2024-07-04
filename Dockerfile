@@ -36,8 +36,9 @@ CMD ["serve", "-s", "-l", "3000", "./build"]
 
 # To test the build
 # 
+# npm run build
 # npm install -g serve
-# serve -s build
+# npx serve -s build
 
 # Once you have the container, add it to the artifact registry by:
     
