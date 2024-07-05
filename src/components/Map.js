@@ -3,14 +3,14 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 import { createRoot } from "react-dom/client";
 
 import "./Map.css";
-import geoJson from "./geojson/chicago-parks.json";
-import geoJsonTrees from "./geojson/trees.geojson";
+import geoJson from "../geojson/chicago-parks.json";
+import geoJsonTrees from "../geojson/trees.geojson";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-import heatmapLayer from "./layer_styles/heatmapLayer.json";
-import circleLayer from "./layer_styles/circleLayer.json";
-import symbolLayer from "./layer_styles/symbolLayer.json";
-import issLayer from "./layer_styles/issLayer.json";
+import heatmapLayer from "../layer_styles/heatmapLayer.json";
+import circleLayer from "../layer_styles/circleLayer.json";
+import symbolLayer from "../layer_styles/symbolLayer.json";
+import issLayer from "../layer_styles/issLayer.json";
 
 const Marker = ({ onClick, children, feature }) => {
   const _onClick = () => {
@@ -37,7 +37,9 @@ const MapboxExample = () => {
       container: mapContainerRef.current,
       style: 'mapbox://styles/rykr/cly7tbems00tv01qjan5d7zm9',
       center: [-79.999732, 40.4374],
-      zoom: 11
+      zoom: 11,
+      minZoom: 10,
+      maxZoom: 18
     });
 
     mapRef.current.on('load', async () => { //    map.on("load", function () {
