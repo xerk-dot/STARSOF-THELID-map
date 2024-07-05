@@ -1,6 +1,6 @@
 # STARSOF THELID MAP
 
-![alt text](map_early_0002.PNG) ![alt text](map_early_0001.PNG)  ![alt text](map_early_0003.PNG) ![alt text](map_early_0004.PNG) ![alt text](map_early_0005.PNG)
+![alt text](src/pics_of_map/map_early_0002.PNG) ![alt text](src/pics_of_map/map_early_0001.PNG)  ![alt text](src/pics_of_map/map_early_0003.PNG) ![alt text](src/pics_of_map/map_early_0004.PNG) ![alt text](src/pics_of_map/map_early_0005.PNG)
 
 ### How to run
 
