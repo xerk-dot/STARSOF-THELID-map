@@ -7,8 +7,6 @@ import geoJson from "./geojson/chicago-parks.json";
 import geoJsonTrees from "./geojson/trees.geojson";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-import ControlPanel from './control-panel.tsx';
-
 import heatmapLayer from "./layer_styles/heatmapLayer.json";
 import circleLayer from "./layer_styles/circleLayer.json";
 import symbolLayer from "./layer_styles/symbolLayer.json";
