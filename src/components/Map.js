@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import { createRoot } from "react-dom/client";
-
+import Button from "./button";
 import "./Map.css";
 import geoJson from "../geojson/chicago-parks.json";
 import geoJsonTrees from "../geojson/trees.geojson";
@@ -161,7 +161,9 @@ const MapboxExample = () => {
  */
   }, [data]);
 
-  return <div ref={mapContainerRef} id="map" style={{ height: '100%' }} />;
+  
+
+  return <div ref={mapContainerRef} id="map" style={{ height: '100%' }}><Button asdf></Button></div>;
 };
 
 export default MapboxExample;
