@@ -37,8 +37,7 @@ const MapboxExample = () => {
       container: mapContainerRef.current,
       style: 'mapbox://styles/rykr/cly7tbems00tv01qjan5d7zm9',
       center: [-79.999732, 40.4374],
-      zoom: 11,
-      minZoom: 10,
+      zoom: 13,
       maxZoom: 18
     });
 
