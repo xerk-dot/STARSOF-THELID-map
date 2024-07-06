@@ -161,7 +161,17 @@ const MapboxExample = () => {
   }, [data]);
 
   
-
+  return (
+    <div className="wrapper">
+      <div className="content">
+        <h1>Hello</h1>
+        <p>Hi</p>
+      </div>
+      <div className="map-wrapper">
+        <div ref={mapContainerRef} id="map" />
+      </div>
+    </div>
+  );
   return <div ref={mapContainerRef} id="map" style={{ height: '100%' }}></div>;
 };
 

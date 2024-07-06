@@ -31,3 +31,41 @@
   margin: 4px 2px;
   border-radius: 50%;
 }
+
+
+:root {
+  --contentHeight: 25%;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  padding: 0 24px;
+  height: var(--contentHeight);
+
+}
+
+.map-wrapper {
+  height: calc(100% - var(--contentHeight));
+  width: 100%;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
