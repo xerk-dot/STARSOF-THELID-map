@@ -34,7 +34,7 @@
 
 
 :root {
-  --contentHeight: 25%;
+  --contentHeight: 15%;
 }
 
 body,
@@ -46,7 +46,7 @@ html {
 .wrapper {
   height: 100vh;
   width: 100%;
-  background-color: black;
+  background-color: rgb(71, 18, 18);
 
 }
 
